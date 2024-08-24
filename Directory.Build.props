@@ -1,7 +1,6 @@
 <Project>
     <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
     <PropertyGroup>
-        <Title>AvaloniaExtras</Title>
         <Version>0.0.0-devbuild</Version>
         <Description>Avalonia source generators and helpers.</Description>
         <Copyright>© 2024 ArudenKun</Copyright>
@@ -10,7 +9,7 @@
         <RepositoryUrl>https://github.com/ArudenKun/AvaloniaExtras</RepositoryUrl>
         <PackageProjectUrl>$(RepositoryUrl)</PackageProjectUrl>
         <PackageTags>generator;utilities;avalonia</PackageTags>
-<!--        <PackageReadmeFile>README.md</PackageReadmeFile>-->
-<!--        <PackageLicenseFile>LICENSE</PackageLicenseFile>-->
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
 </Project>

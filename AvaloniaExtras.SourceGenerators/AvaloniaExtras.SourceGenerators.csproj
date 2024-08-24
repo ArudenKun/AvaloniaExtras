@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netstandard2.1</TargetFramework>
+        <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>12</LangVersion>
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
@@ -12,13 +12,28 @@
         <IsRoslynComponent>true</IsRoslynComponent>
         <AnalyzerLanguage>cs</AnalyzerLanguage>
         <DebugType>portable</DebugType>
-        <PackageId>ArudenKun.AvaloniaExtras.SourceGenerators</PackageId>
+        <PackageId>AvaloniaExtras.SourceGenerators</PackageId>
+        <Title>AvaloniaExtras.SourceGenerators</Title>
     </PropertyGroup>
 
     <ItemGroup>
         <!-- Has to be in its own item group -->
         <None Include="../README.md" Pack="true" PackagePath="\" />
         <None Include="../LICENSE" Pack="true" PackagePath="\" />
+    </ItemGroup>
+    
+    <ItemGroup>
+        <PackageReference Include="H.Generators.Extensions" Version="1.22.0" PrivateAssets="all"/>
+        <PackageReference Include="H.Resources.Generator" Version="1.6.0">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="JetBrains.Annotations" Version="2024.2.0" PrivateAssets="all" />
+        <PackageReference Include="Microsoft.CodeAnalysis.CSharp" Version="4.11.0" PrivateAssets="all"/>
+        <PackageReference Include="PolySharp" Version="1.14.1">
+            <PrivateAssets>all</PrivateAssets>
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
     </ItemGroup>
 
     <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
