@@ -57,23 +57,23 @@ jobs:
         id: packages-path
         run: |
           packages=$(find nupkg -type f -name "*.nupkg")
-          echo "packages=$packages" >> "$GITHUB_OUTPUT"
-          echo "📦 Found generator packages: $packages"
+          packages_output=$(echo "$packages" | jq -R -s -c 'split("\n")[:-1]')
+          echo "packages=$packages_output" >> $GITHUB_OUTPUT
+          echo "📦 Found generator packages: $packages_output"
 
       - name: ✨ Create Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           version="${{ steps.next-version.outputs.version }}"
-          packages="${{ steps.packages-path.outputs.packages }}"
-          IFS=$'\n' read -rd '' -a package_array <<< "$packages"
-          gh release create --title "v$version" --generate-notes "$version" "${package_array[@]}"
+          packages="${{ fromJson(steps.packages-path.outputs.packages) }}"
+          gh release create --title "v$version" --generate-notes "$version" "${packages[@]}"
 
       - name: 🛜 Publish to Github Nuget
         run: |
-          packages="${{ steps.packages-path.outputs.packages }}"
-          for package in $packages; do
+          packages="${{ fromJson(steps.packages-path.outputs.packages) }}"
+          for package in "${packages[@]}"; do
             dotnet nuget push "$package" \
-              --api-key "${{ secrets.GITHUB_TOKEN }}" \
-              --source "https://nuget.pkg.github.com/ArudenKun/index.json" --skip-duplicate
+            --api-key "${{ secrets.GITHUB_TOKEN }}" \
+            --source "https://nuget.pkg.github.com/ArudenKun/index.json" --skip-duplicate
           done
