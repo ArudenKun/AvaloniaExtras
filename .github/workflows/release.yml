@@ -51,22 +51,12 @@ jobs:
 
       - name: 📦 Build
         run: |
-          dotnet build \
-            GodotSharpExtras/GodotSharpExtras.csproj -c Release
-          dotnet build \
-            GodotSharpExtras.SourceGenerators/GodotSharpExtras.SourceGenerators.csproj -c Release
+          dotnet build -c Release
 
-      - name: 🔎 Get Package Path
-        id: package-path
+      - name: 🔎 Get Packages Path
+        id: packages-path
         run: |
-          package=$(find GodotSharpExtras/nupkg -type f -name "*.nupkg")
-          echo "package=$package" >> "$GITHUB_OUTPUT"
-          echo "📦 Found package: $package"
-
-      - name: 🔎 Get Generator Package Path
-        id: gen-package-path
-        run: |
-          package=$(find GodotSharpExtras.SourceGenerators/nupkg -type f -name "*.nupkg")
+          package=$(find nupkg -type f -name "*.nupkg")
           echo "package=$package" >> "$GITHUB_OUTPUT"
           echo "📦 Found generator package: $package"
 
@@ -75,15 +65,15 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           version="${{ steps.next-version.outputs.version }}"
-          gh release create --title "v$version" --generate-notes "$version" \
-            "${{ steps.package-path.outputs.package }}" "${{ steps.gen-package-path.outputs.package }}"
+          packages="${{ steps.packages-path.outputs.packages }}"
+          IFS=$'\n' read -rd '' -a package_array <<< "$packages"
+          gh release create --title "v$version" --generate-notes "$version" "${package_array[@]}"
 
       - name: 🛜 Publish to Github Nuget
         run: |
-          dotnet nuget push "${{ steps.package-path.outputs.package }}" \
-            --api-key "${{ secrets.GITHUB_TOKEN }}" \
-            --source "https://nuget.pkg.github.com/ArudenKun/index.json" --skip-duplicate
-
-            dotnet nuget push "${{ steps.gen-package-path.outputs.package }}" \
-            --api-key "${{ secrets.GITHUB_TOKEN }}" \
-            --source "https://nuget.pkg.github.com/ArudenKun/index.json" --skip-duplicate
+          packages="${{ steps.packages-path.outputs.packages }}"
+          for package in $packages; do
+            dotnet nuget push "$package" \
+              --api-key "${{ secrets.GITHUB_TOKEN }}" \
+              --source "https://nuget.pkg.github.com/ArudenKun/index.json" --skip-duplicate
+          done
