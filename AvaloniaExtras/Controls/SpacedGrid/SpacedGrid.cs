@@ -6,26 +6,41 @@ using Avalonia.Controls;
 
 namespace AvaloniaExtras.Controls.SpacedGrid;
 
+/// <summary>
+///
+/// </summary>
 public class SpacedGrid : Grid
 {
     #region Properties
 
+    /// <summary>
+    ///
+    /// </summary>
     public static readonly StyledProperty<double> RowSpacingProperty = AvaloniaProperty.Register<
         SpacedGrid,
         double
     >(nameof(RowSpacing), 3);
 
+    /// <summary>
+    ///
+    /// </summary>
     public static readonly StyledProperty<double> ColumnSpacingProperty = AvaloniaProperty.Register<
         SpacedGrid,
         double
     >(nameof(ColumnSpacing), 3);
 
+    /// <summary>
+    ///
+    /// </summary>
     public double RowSpacing
     {
         get => GetValue(RowSpacingProperty);
         set => SetValue(RowSpacingProperty, value);
     }
 
+    /// <summary>
+    ///
+    /// </summary>
     public double ColumnSpacing
     {
         get => GetValue(ColumnSpacingProperty);
@@ -48,12 +63,16 @@ public class SpacedGrid : Grid
 
     #region Construction
 
+    /// <summary>
+    ///
+    /// </summary>
     public SpacedGrid() => Children.CollectionChanged += Children_CollectionChanged;
 
     #endregion Construction
 
     #region Override methods
 
+    /// <inheritdoc />
     protected override void OnInitialized()
     {
         base.OnInitialized();
@@ -71,6 +90,7 @@ public class SpacedGrid : Grid
         UpdateSpacedColumns();
     }
 
+    /// <inheritdoc />
     protected override void OnPropertyChanged(AvaloniaPropertyChangedEventArgs change)
     {
         base.OnPropertyChanged(change);
