@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras", "AvaloniaExtras\AvaloniaExtras.csproj", "{146720FC-9AB3-473D-B643-4B903CCBAE92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solutions Items", "{1EFB5F09-58EB-49EE-93E5-7EBDDC306019}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras.SourceGenerators", "AvaloniaExtras.SourceGenerators\AvaloniaExtras.SourceGenerators.csproj", "{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{146720FC-9AB3-473D-B643-4B903CCBAE92}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{146720FC-9AB3-473D-B643-4B903CCBAE92}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{146720FC-9AB3-473D-B643-4B903CCBAE92}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{146720FC-9AB3-473D-B643-4B903CCBAE92}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

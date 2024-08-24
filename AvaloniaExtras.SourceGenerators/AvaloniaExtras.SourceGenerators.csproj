@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.1</TargetFramework>
+        <LangVersion>12</LangVersion>
+        <Nullable>enable</Nullable>
+        <IncludeBuildOutput>false</IncludeBuildOutput>
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <NoWarn>NU5128</NoWarn>
+        <OutputPath>../nupkg</OutputPath>
+        <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <AnalyzerLanguage>cs</AnalyzerLanguage>
+        <DebugType>portable</DebugType>
+        <PackageId>ArudenKun.AvaloniaExtras.SourceGenerators</PackageId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <!-- Has to be in its own item group -->
+<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
+<!--        <None Include="../LICENSE" Pack="true" PackagePath="\" />-->
+    </ItemGroup>
+
+    <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
+    <ItemGroup>
+        <None Include="$(OutputPath)\$(AssemblyName).dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+    </ItemGroup>
+
+</Project>
