@@ -67,8 +67,8 @@ jobs:
         run: |
           version="${{ steps.next-version.outputs.version }}"
           packages="${{ steps.packages-path.outputs.packages }}"
-          packages_array=$(echo "$packages" | jq -r '.[]' | sed 's/"/\\"/g' | xargs -I {} echo "\"{}\"")
-          gh release create "v$version" --title "v$version" --generate-notes $packages_array
+          packages_list=$(echo "$packages" | jq -r '.[] | @sh' | tr '\n' ' ')
+          gh release create "v$version" --title "v$version" --generate-notes $packages_list
 
       - name: 🛜 Publish to Github Nuget
         run: |
