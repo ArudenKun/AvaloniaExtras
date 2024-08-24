@@ -67,8 +67,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           version="${{ steps.next-version.outputs.version }}"
-          packages="${{ fromJson(steps.packages-path.outputs.packages) }}"
-          gh release create --title "v$version" --generate-notes "$version" "${packages[@]}"
+          packages_list=$(echo '${{ steps.packages-path.outputs.packages }}' | jq -r '.[]' | awk '{printf "\"%s\" ", $0}' | xargs)
+          echo "Packages list: $packages_list"
+          gh release create --title "v$version" --generate-notes "$version" $packages_list
 
       - name: 🛜 Publish to Github Nuget
         run: |
