@@ -57,7 +57,7 @@ jobs:
         id: packages-path
         run: |
           packages=$(find nupkg -type f -name "*.nupkg")
-          echo "package=$packages" >> "$GITHUB_OUTPUT"
+          echo "packages=$packages" >> "$GITHUB_OUTPUT"
           echo "📦 Found generator packages: $packages"
 
       - name: ✨ Create Release
