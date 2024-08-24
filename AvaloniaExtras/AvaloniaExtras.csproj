@@ -15,8 +15,8 @@
 
     <ItemGroup>
         <!-- Has to be in its own item group -->
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
-<!--        <None Include="../LICENSE" Pack="true" PackagePath="\" />-->
+        <None Include="../README.md" Pack="true" PackagePath="\" />
+        <None Include="../LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <ItemGroup>

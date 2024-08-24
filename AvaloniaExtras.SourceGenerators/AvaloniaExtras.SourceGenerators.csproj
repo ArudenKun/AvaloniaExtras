@@ -6,7 +6,7 @@
         <Nullable>enable</Nullable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-        <NoWarn>NU5128</NoWarn>
+        <NoWarn>$(NoWarn);NU5128</NoWarn>
         <OutputPath>../nupkg</OutputPath>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <IsRoslynComponent>true</IsRoslynComponent>
@@ -17,8 +17,8 @@
 
     <ItemGroup>
         <!-- Has to be in its own item group -->
-<!--        <None Include="../README.md" Pack="true" PackagePath="\" />-->
-<!--        <None Include="../LICENSE" Pack="true" PackagePath="\" />-->
+        <None Include="../README.md" Pack="true" PackagePath="\" />
+        <None Include="../LICENSE" Pack="true" PackagePath="\" />
     </ItemGroup>
 
     <!-- This ensures the library will be packaged as a source generator when we use `dotnet pack` -->
