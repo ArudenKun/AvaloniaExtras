@@ -75,6 +75,7 @@ jobs:
         run: |
           packages=$(echo '${{ steps.packages-path.outputs.packages }}' | jq -r '.[]')
           while IFS= read -r package; do
+          echo "Package: $package"
           dotnet nuget push "$package" \
           --api-key "${{ secrets.GITHUB_TOKEN }}" \
           --source "https://nuget.pkg.github.com/ArudenKun/index.json" \
