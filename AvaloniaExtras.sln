@@ -10,6 +10,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solutions Items", "Solution
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras.SourceGenerators", "AvaloniaExtras.SourceGenerators\AvaloniaExtras.SourceGenerators.csproj", "{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras.Attributes", "AvaloniaExtras.Attributes\AvaloniaExtras.Attributes.csproj", "{46FEFE59-084E-4A40-BB94-F6C38BB87749}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{39966FE6-6FCA-4C36-95A1-BD1B9DF72B08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

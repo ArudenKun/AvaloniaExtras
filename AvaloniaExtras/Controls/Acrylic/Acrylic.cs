@@ -1,12 +1,14 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
+using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Controls.Acrylic;
 
 /// <summary>
 ///
 /// </summary>
+[PublicAPI]
 public class Acrylic : ContentControl
 {
     private static readonly ImmutableExperimentalAcrylicMaterial DefaultAcrylicMaterial =
@@ -16,7 +18,7 @@ public class Acrylic : ContentControl
                 MaterialOpacity = 0.1,
                 TintColor = new Color(255, 5, 5, 5),
                 TintOpacity = 1,
-                PlatformTransparencyCompensationLevel = 0
+                PlatformTransparencyCompensationLevel = 0,
             }.ToImmutable();
 
     /// <summary>

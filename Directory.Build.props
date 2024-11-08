@@ -2,7 +2,7 @@
     <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
     <PropertyGroup>
         <Version>0.0.0-devbuild</Version>
-        <Description>Avalonia source generators and helpers.</Description>
+        <Description>Avalonia source generators, helpers and controls.</Description>
         <Copyright>© 2024 ArudenKun</Copyright>
         <Authors>ArudenKun</Authors>
         <Company>ArudenKun</Company>
@@ -12,4 +12,6 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
+
+    <Sdk Name="ViHo.PackAsAnalyzer" Version="1.0.1"/>
 </Project>

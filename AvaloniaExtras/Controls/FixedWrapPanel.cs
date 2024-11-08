@@ -1,8 +1,11 @@
-﻿using Avalonia;
+﻿using System.Diagnostics.Contracts;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Input;
 using Avalonia.Utilities;
+using JetBrains.Annotations;
 using static System.Math;
+
 #pragma warning disable CS0618 // Type or member is obsolete
 
 namespace AvaloniaExtras.Controls;
@@ -10,6 +13,7 @@ namespace AvaloniaExtras.Controls;
 /// <summary>
 ///
 /// </summary>
+[PublicAPI]
 public class FixedWrapPanel : Panel, INavigableContainer
 {
     /// <summary>

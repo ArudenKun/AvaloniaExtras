@@ -1,14 +1,17 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics.Contracts;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
+using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Controls.SpacedGrid;
 
 /// <summary>
 ///
 /// </summary>
+[PublicAPI]
 public class SpacedGrid : Grid
 {
     #region Properties

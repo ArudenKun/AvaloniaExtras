@@ -13,15 +13,28 @@ jobs:
   release:
     name: "📦 Release"
     runs-on: ubuntu-latest
-    permissions: write-all 
+    permissions:
+      contents: write
     env:
       DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
       DOTNET_NOLOGO: true
+      NUGET_CERT_REVOCATION_MODE: offline
     steps:
       - name: 🧾 Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          
+      - name: 🔎 Check Cache
+        id: check-cache
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.nuget
+            ~/.dotnet
+            ${{ github.workspace }}/.config
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json', '**/*.csproj') }}
 
       - name: 🔎 Read Current Project Version
         id: current-version
@@ -68,16 +81,16 @@ jobs:
         run: |
           version="${{ steps.next-version.outputs.version }}"
           packages_list=$(echo '${{ steps.packages-path.outputs.packages }}' | jq -r '.[]' | awk '{printf "\"%s\" ", $0}' | xargs)
-          echo "Packages list: $packages_list"
+          echo "Packages: $packages_list"
           gh release create --title "v$version" --generate-notes "$version" $packages_list
 
       - name: 🛜 Publish to Github Nuget
         run: |
           packages=$(echo '${{ steps.packages-path.outputs.packages }}' | jq -r '.[]')
           while IFS= read -r package; do
-          echo "Package: $package"
-          dotnet nuget push "$package" \
-          --api-key "${{ secrets.GITHUB_TOKEN }}" \
-          --source "https://nuget.pkg.github.com/ArudenKun/index.json" \
-          --skip-duplicate
+            dotnet nuget push "$package" \
+            --api-key "${{ secrets.GITHUB_TOKEN }}" \
+            --source "https://nuget.pkg.github.com/ArudenKun/index.json" \
+            --skip-duplicate
           done <<< "$packages"
+  
