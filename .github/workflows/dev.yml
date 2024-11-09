@@ -39,9 +39,15 @@ jobs:
           regex: false
           include: Directory.Build.props
 
+      - name: 🔎 Read Next Version
+        id: next-version
+        run: |
+          VERSION=$(grep -oPm1 "(?<=<Version>)[^<]+" Directory.Build.props)
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
       - name: 🖨 Print New Version
         run: |
-          echo "New Version: ${{ steps.current-version.outputs.tag }}-dev${{ github.run_number }}"
+          echo "New Version: ${{ steps.next-version.outputs.version }}"
 
       - name: 📦 Build Package
         run: |
