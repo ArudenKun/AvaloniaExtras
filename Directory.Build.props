@@ -1,7 +1,7 @@
 <Project>
     <!-- See https://aka.ms/dotnet/msbuild/customize for more details on customizing your build -->
     <PropertyGroup>
-        <Version>0.0.0-devbuild</Version>
+        <Version>0.0.0</Version>
         <Description>Avalonia source generators, helpers and controls.</Description>
         <Copyright>© 2024 ArudenKun</Copyright>
         <Authors>ArudenKun</Authors>
