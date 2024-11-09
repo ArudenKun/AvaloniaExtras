@@ -8,7 +8,9 @@ namespace AvaloniaExtras;
 /// </summary>
 public class AvaloniaExtrasTheme : Styles
 {
-    /// <inheritdoc />
+    /// <summary>
+    ///
+    /// </summary>
     public AvaloniaExtrasTheme()
     {
         AvaloniaXamlLoader.Load(this);

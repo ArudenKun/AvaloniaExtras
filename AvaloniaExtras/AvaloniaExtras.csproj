@@ -19,7 +19,10 @@
         <!-- Has to be in its own item group -->
         <None Include="../README.md" Pack="true" PackagePath="\"/>
         <None Include="../LICENSE" Pack="true" PackagePath="\"/>
-        <None Include="$(AssemblyName).props" Pack="true" PackagePath="build"/>
+        <None Include="ArudenKun.AvaloniaExtras.props">
+          <Pack>true</Pack>
+          <PackagePath>build</PackagePath>
+        </None>
     </ItemGroup>
 
     <ItemGroup>
@@ -29,12 +32,13 @@
         </PackageReference>
         <PackageReference Include="Avalonia" Version="11.2.0"/>
         <PackageReference Include="Avalonia.Skia" Version="11.2.0"/>
-        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0"/>
+        <PackageReference Include="JetBrains.Annotations" Version="2024.3.0" PrivateAssets="all"/>
     </ItemGroup>
 
     <ItemGroup>
         <ProjectReference Include="..\AvaloniaExtras.SourceGenerators\AvaloniaExtras.SourceGenerators.csproj" ReferenceOutputAssembly="false"
                           PackAsAnalyzer="true"/>
+        <None Include="..\AvaloniaExtras.SourceGenerators\bin\$(Configuration)\netstandard2.0\H.Generators.Extensions.dll" Pack="true" PackagePath="analyzers/dotnet" Visible="false" />
     </ItemGroup>
 
 </Project>

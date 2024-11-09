@@ -17,12 +17,15 @@
         <AdditionalFiles Include="../AvaloniaExtras.Attributes/*.cs" Visible="false"/>
     </ItemGroup>
 
+    <ItemGroup Label="Usings">
+        <Using Include="H.Generators.Extensions" />
+    </ItemGroup>
+
     <ItemGroup>
         <PackageReference Include="AvantiPoint.CodeGenHelpers" Version="1.6.20">
             <PrivateAssets>all</PrivateAssets>
             <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Dunet" Version="1.11.2" PrivateAssets="all"/>
         <PackageReference Include="H.Generators.Extensions" Version="1.22.0" PrivateAssets="all"/>
         <PackageReference Include="H.Resources.Generator" Version="1.6.1">
             <PrivateAssets>all</PrivateAssets>

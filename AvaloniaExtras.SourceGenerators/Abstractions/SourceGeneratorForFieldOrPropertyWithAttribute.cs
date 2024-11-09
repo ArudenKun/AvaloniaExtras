@@ -63,8 +63,8 @@ public abstract class SourceGeneratorForFieldOrPropertyWithAttribute<TAttribute>
     private static VariableSymbol ProcessSymbol(ISymbol symbol) =>
         symbol switch
         {
-            IPropertySymbol propertySymbol => new VariableSymbol.Property(propertySymbol),
-            IFieldSymbol fieldSymbol => new VariableSymbol.Field(fieldSymbol),
+            IPropertySymbol propertySymbol => new VariableSymbol(propertySymbol),
+            IFieldSymbol fieldSymbol => new VariableSymbol(fieldSymbol),
             _ => throw new InvalidCastException(
                 $"Unexpected symbol type: {symbol.GetType().FullName}"
             ),
