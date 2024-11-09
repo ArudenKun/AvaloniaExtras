@@ -5,6 +5,7 @@
         <LangVersion>12</LangVersion>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <NoWarn>$(NoWarn);CS9113</NoWarn>
     </PropertyGroup>
 
 </Project>

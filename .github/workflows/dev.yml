@@ -1,20 +1,12 @@
-name: "📦 Stable Release"
+name: "📦 Dev Release"
 on:
+  push:
+    - main
   workflow_dispatch:
-    inputs:
-      bump:
-        type: choice
-        description: "major, minor, or build"
-        required: true
-        options:
-          - bump-major
-          - bump-minor
-          - bump-build
-        default: bump-build
 
 jobs:
   release:
-    name: "🛠️ Build Stable Release"
+    name: "🛠️ Build Dev Release"
     runs-on: ubuntu-latest
     permissions: write-all
     env:
@@ -28,7 +20,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 🔎 Read Current Project Version
+      - name: 🔎 Read Current Version
         id: current-version
         uses: WyriHaximus/github-action-get-previous-tag@v1
         with:
@@ -38,16 +30,17 @@ jobs:
         run: |
           echo "Current Version: ${{ steps.current-version.outputs.tag }}"
 
-      - name: 🧮 Compute Next Version
-        id: next-version
-        uses: vers-one/dotnet-project-version-updater@v1.6
+      - name: 📝 Write Version to File
+        uses: jacobtomlinson/gha-find-replace@v3
         with:
-          file: Directory.Build.props
-          version: ${{ inputs.bump }}
+          find: "0.0.0"
+          replace: ${{ steps.current-version.outputs.tag }}-dev${{ github.run_number }}
+          regex: false
+          include: Directory.Build.props
 
       - name: 🖨 Print New Version
         run: |
-          echo "New Version: ${{ steps.next-version.outputs.newVersion }}"
+          echo "New Version: ${{ steps.current-version.outputs.tag }}-dev${{ github.run_number }}"
 
       - name: 📦 Build Package
         run: |
@@ -63,9 +56,9 @@ jobs:
       - name: ✨ Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Stable ${{ steps.next-version.outputs.newVersion }}
+          name: Dev ${{ steps.next-version.outputs.newVersion }}
           tag_name: ${{ steps.next-version.outputs.newVersion }}
-          files: ${{ steps.package-path.outputs.package }}
+          prerelease: true
 
       - name: 🛜 Publish to Nuget
         run: |

@@ -1,0 +1,81 @@
+name: "📦 Stable Release"
+on:
+  workflow_dispatch:
+    inputs:
+      bump:
+        type: choice
+        description: "major, minor, or build"
+        required: true
+        options:
+          - bump-major
+          - bump-minor
+          - bump-build
+        default: bump-build
+
+jobs:
+  release:
+    name: "🛠️ Build Stable Release"
+    runs-on: ubuntu-latest
+    permissions: write-all
+    env:
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      DOTNET_SKIP_FIRST_TIME_EXPERIENCE: true
+      DOTNET_NOLOGO: true
+      NUGET_CERT_REVOCATION_MODE: offline
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔎 Read Current Version
+        id: current-version
+        uses: WyriHaximus/github-action-get-previous-tag@v1
+        with:
+          fallback: "0.0.0"
+
+      - name: 🖨 Print Current Version
+        run: |
+          echo "Current Version: ${{ steps.current-version.outputs.tag }}"
+          
+      - name: 📝 Write Version to File
+        uses: jacobtomlinson/gha-find-replace@v3
+        with:
+          find: "0.0.0"
+          replace: ${{ steps.current-version.outputs.tag }}
+          regex: false
+          include: Directory.Build.props
+
+      - name: 🧮 Compute Next Version
+        id: next-version
+        uses: vers-one/dotnet-project-version-updater@v1.6
+        with:
+          file: Directory.Build.props
+          version: ${{ inputs.bump }}
+
+      - name: 🖨 Print New Version
+        run: |
+          echo "New Version: ${{ steps.next-version.outputs.newVersion }}"
+
+      - name: 📦 Build Package
+        run: |
+          dotnet build -c Release
+
+      - name: 🔎 Get Package Path
+        id: package-path
+        run: |
+          package=$(find nupkg -name "ArudenKun.AvaloniaExtras.*.nupkg")
+          echo "package=$package" >> "$GITHUB_OUTPUT"
+          echo "📦 Found package: $package"
+
+      - name: ✨ Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: Stable ${{ steps.next-version.outputs.newVersion }}
+          tag_name: ${{ steps.next-version.outputs.newVersion }}
+
+      - name: 🛜 Publish to Nuget
+        run: |
+          dotnet nuget push "${{ steps.package-path.outputs.package }}" \
+            --api-key "${{ secrets.NUGET_API_KEY }}" \
+            --source "https://api.nuget.org/v3/index.json"
