@@ -63,8 +63,8 @@ jobs:
       - name: ✨ Create Release
         uses: softprops/action-gh-release@v2
         with:
-          name: Dev ${{ steps.next-version.outputs.newVersion }}
-          tag_name: ${{ steps.next-version.outputs.newVersion }}
+          name: Dev ${{ steps.next-version.outputs.version }}
+          tag_name: ${{ steps.next-version.outputs.version }}
           prerelease: true
 
       - name: 🛜 Publish to Nuget
