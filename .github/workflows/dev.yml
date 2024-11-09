@@ -1,8 +1,9 @@
 name: "📦 Dev Release"
 on:
-  push:
-    - main
   workflow_dispatch:
+  push:
+    branches:
+      - main
 
 jobs:
   release:
