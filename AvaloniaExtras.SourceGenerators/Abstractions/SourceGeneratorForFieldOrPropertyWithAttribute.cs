@@ -16,7 +16,7 @@ public abstract class SourceGeneratorForFieldOrPropertyWithAttribute<TAttribute>
         Compilation compilation,
         VariableSyntax node,
         VariableSymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => string.Empty;
 
@@ -24,7 +24,7 @@ public abstract class SourceGeneratorForFieldOrPropertyWithAttribute<TAttribute>
         Compilation compilation,
         VariableSyntax node,
         VariableSymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     ) => string.Empty;
 
@@ -32,7 +32,7 @@ public abstract class SourceGeneratorForFieldOrPropertyWithAttribute<TAttribute>
         Compilation compilation,
         SyntaxNode node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, ProcessNode(node), ProcessSymbol(symbol), attribute, options);
 
@@ -40,7 +40,7 @@ public abstract class SourceGeneratorForFieldOrPropertyWithAttribute<TAttribute>
         Compilation compilation,
         SyntaxNode node,
         ISymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, ProcessNode(node), ProcessSymbol(symbol), attributes, options);
 

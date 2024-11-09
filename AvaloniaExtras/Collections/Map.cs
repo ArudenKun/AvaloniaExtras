@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Linq;
 
+#nullable disable
+
 namespace AvaloniaExtras.Collections;
 
 /// <summary>
@@ -17,7 +19,7 @@ public interface IMap<TKey, TValue> : IDictionary<TKey, TValue>
 {
     /// <summary>Retrieve a map value by index.</summary>
     /// <param name="index">Index of the value to access.</param>
-    TValue? this[int index] { get; set; }
+    TValue this[int index] { get; set; }
 
     /// <summary>Insert a key and value at the specified index.</summary>
     /// <param name="index">Index to insert to.</param>
@@ -52,9 +54,9 @@ public class Map<TKey, TValue> : IMap<TKey, TValue>
 
     /// <summary>Retrieve a map value by index.</summary>
     /// <param name="index">Index of the value to access.</param>
-    public TValue? this[int index]
+    public TValue this[int index]
     {
-        get => (TValue?)_collection[index];
+        get => (TValue)_collection[index];
         set => _collection[index] = value;
     }
 
@@ -134,7 +136,7 @@ public class Map<TKey, TValue> : IMap<TKey, TValue>
         lock (_collection)
         {
             return _collection.Contains(item.Key)
-                && EqualityComparer<object?>.Default.Equals(_collection[item.Key], item.Value);
+                && EqualityComparer<object>.Default.Equals(_collection[item.Key], item.Value);
         }
     }
 

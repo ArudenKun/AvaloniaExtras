@@ -29,7 +29,7 @@ public sealed class Generator : SourceGeneratorForTypeWithAttribute<StaticViewLo
         Compilation compilation,
         TypeDeclarationSyntax node,
         INamedTypeSymbol symbol,
-        StaticViewLocatorAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     )
     {

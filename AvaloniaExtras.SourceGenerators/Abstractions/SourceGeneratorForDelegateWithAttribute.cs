@@ -14,7 +14,7 @@ public abstract class SourceGeneratorForDelegateWithAttribute<TAttribute>
         Compilation compilation,
         DelegateDeclarationSyntax node,
         INamedTypeSymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => string.Empty;
 
@@ -22,7 +22,7 @@ public abstract class SourceGeneratorForDelegateWithAttribute<TAttribute>
         Compilation compilation,
         DelegateDeclarationSyntax node,
         INamedTypeSymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     ) => string.Empty;
 
@@ -30,7 +30,7 @@ public abstract class SourceGeneratorForDelegateWithAttribute<TAttribute>
         Compilation compilation,
         DelegateDeclarationSyntax node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, node, (INamedTypeSymbol)symbol, attribute, options);
 
@@ -38,7 +38,7 @@ public abstract class SourceGeneratorForDelegateWithAttribute<TAttribute>
         Compilation compilation,
         DelegateDeclarationSyntax node,
         ISymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, node, (INamedTypeSymbol)symbol, attributes, options);
 }

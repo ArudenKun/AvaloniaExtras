@@ -79,7 +79,7 @@ public abstract class SourceGeneratorForMemberWithAttribute<TAttribute, TDeclara
                     compilation,
                     (TDeclarationSyntax)node,
                     symbol,
-                    [.. attributes.Select(x => x.MapToAttributeType<TAttribute>())],
+                    attributes,
                     options.GlobalOptions
                 );
             }
@@ -89,7 +89,7 @@ public abstract class SourceGeneratorForMemberWithAttribute<TAttribute, TDeclara
                     compilation,
                     (TDeclarationSyntax)node,
                     symbol,
-                    attributes.First().MapToAttributeType<TAttribute>(),
+                    attributes.First(),
                     options.GlobalOptions
                 );
             }
@@ -107,7 +107,7 @@ public abstract class SourceGeneratorForMemberWithAttribute<TAttribute, TDeclara
         Compilation compilation,
         TDeclarationSyntax node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     );
 
@@ -115,7 +115,7 @@ public abstract class SourceGeneratorForMemberWithAttribute<TAttribute, TDeclara
         Compilation compilation,
         TDeclarationSyntax node,
         ISymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     );
 

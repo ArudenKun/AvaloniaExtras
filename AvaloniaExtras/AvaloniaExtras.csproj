@@ -10,7 +10,7 @@
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <OutputPath>../nupkg</OutputPath>
         <DebugType>portable</DebugType>
-        <PackageId>AvaloniaExtras</PackageId>
+        <PackageId>ArudenKun.AvaloniaExtras</PackageId>
         <Title>AvaloniaExtras</Title>
         <IsAotCompatible>true</IsAotCompatible>
     </PropertyGroup>

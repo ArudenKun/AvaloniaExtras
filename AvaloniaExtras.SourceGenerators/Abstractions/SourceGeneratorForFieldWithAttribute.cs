@@ -14,7 +14,7 @@ public abstract class SourceGeneratorForFieldWithAttribute<TAttribute>
         Compilation compilation,
         FieldDeclarationSyntax node,
         IFieldSymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     );
 
@@ -22,7 +22,7 @@ public abstract class SourceGeneratorForFieldWithAttribute<TAttribute>
         Compilation compilation,
         VariableDeclaratorSyntax node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     )
     {

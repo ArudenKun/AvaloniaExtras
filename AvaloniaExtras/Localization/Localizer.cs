@@ -17,10 +17,7 @@ public static class Localizer
     ///
     /// </summary>
     /// <param name="localizer"></param>
-    public static void SetLocalizer(ILocalizer localizer)
-    {
-        _localizer = localizer;
-    }
+    public static void SetLocalizer(ILocalizer localizer) => _localizer = localizer;
 
     /// <summary>
     ///
@@ -41,10 +38,7 @@ public static class Localizer
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
-    public static string Get(string key)
-    {
-        return _localizer.Get(key);
-    }
+    public static string Get(string key) => _localizer.Get(key);
 
     /// <summary>
     ///

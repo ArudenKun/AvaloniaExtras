@@ -30,10 +30,7 @@ public sealed partial class JsonLocalizer : BaseLocalizer
             ?? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Translations");
     }
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <exception cref="FileNotFoundException"></exception>
+    /// <inheritdoc />
     public override void Reload()
     {
         _languageStrings.Clear();
@@ -46,7 +43,6 @@ public sealed partial class JsonLocalizer : BaseLocalizer
         {
             var language = Path.GetFileNameWithoutExtension(file);
             var match = LanguageRegex().Match(language);
-
             if (match.Success)
             {
                 Languages.Add(new CultureInfo(language));
@@ -81,12 +77,15 @@ public sealed partial class JsonLocalizer : BaseLocalizer
         HasLoaded = true;
     }
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <param name="key"></param>
-    /// <returns></returns>
-    /// <exception cref="Exception"></exception>
+    /// <inheritdoc />
+    protected override void SetLanguage(CultureInfo language)
+    {
+        base.SetLanguage(language);
+        Reload();
+        RefreshUi();
+    }
+
+    /// <inheritdoc />
     public override string Get(string key)
     {
         if (!HasLoaded)

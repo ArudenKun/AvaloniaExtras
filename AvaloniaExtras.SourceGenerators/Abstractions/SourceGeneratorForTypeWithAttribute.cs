@@ -14,7 +14,7 @@ public abstract class SourceGeneratorForTypeWithAttribute<TAttribute>
         Compilation compilation,
         TypeDeclarationSyntax node,
         INamedTypeSymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     )
     {
@@ -25,7 +25,7 @@ public abstract class SourceGeneratorForTypeWithAttribute<TAttribute>
         Compilation compilation,
         TypeDeclarationSyntax node,
         INamedTypeSymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     )
     {
@@ -36,7 +36,7 @@ public abstract class SourceGeneratorForTypeWithAttribute<TAttribute>
         Compilation compilation,
         TypeDeclarationSyntax node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, node, (INamedTypeSymbol)symbol, attribute, options);
 
@@ -44,7 +44,7 @@ public abstract class SourceGeneratorForTypeWithAttribute<TAttribute>
         Compilation compilation,
         TypeDeclarationSyntax node,
         ISymbol symbol,
-        ImmutableArray<TAttribute> attributes,
+        ImmutableArray<AttributeData> attributes,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, node, (INamedTypeSymbol)symbol, attributes, options);
 }

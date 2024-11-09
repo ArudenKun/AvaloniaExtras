@@ -49,12 +49,7 @@ public abstract class BaseLocalizer : ILocalizer
     ///
     /// </summary>
     /// <param name="language"></param>
-    protected virtual void SetLanguage(CultureInfo language)
-    {
-        _language = language;
-        Reload();
-        RefreshUi();
-    }
+    protected virtual void SetLanguage(CultureInfo language) => _language = language;
 
     /// <summary>
     ///
@@ -78,7 +73,10 @@ public abstract class BaseLocalizer : ILocalizer
     /// </summary>
     public event EventHandler? LanguageChanged;
 
-    private void RefreshUi()
+    /// <summary>
+    ///
+    /// </summary>
+    protected void RefreshUi()
     {
         LanguageChanged?.Invoke(null, EventArgs.Empty);
     }

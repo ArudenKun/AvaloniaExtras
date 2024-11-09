@@ -13,7 +13,7 @@ public abstract class SourceGeneratorForMethodWithAttribute<TAttribute>
         Compilation compilation,
         MethodDeclarationSyntax node,
         IMethodSymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     );
 
@@ -21,7 +21,7 @@ public abstract class SourceGeneratorForMethodWithAttribute<TAttribute>
         Compilation compilation,
         MethodDeclarationSyntax node,
         ISymbol symbol,
-        TAttribute attribute,
+        AttributeData attribute,
         AnalyzerConfigOptions options
     ) => GenerateCode(compilation, node, (IMethodSymbol)symbol, attribute, options);
 }
