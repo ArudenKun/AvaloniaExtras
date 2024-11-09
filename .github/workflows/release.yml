@@ -89,7 +89,7 @@ jobs:
           packages=$(echo '${{ steps.packages-path.outputs.packages }}' | jq -r '.[]')
           while IFS= read -r package; do
             dotnet nuget push "$package" \
-            --api-key "${{ secrets.GITHUB_TOKEN }}" \
+            --api-key ${{ secrets.GITHUB_TOKEN }} \
             --source "https://nuget.pkg.github.com/ArudenKun/index.json" \
             --skip-duplicate
           done <<< "$packages"
