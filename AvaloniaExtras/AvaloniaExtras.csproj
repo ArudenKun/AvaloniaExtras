@@ -13,6 +13,7 @@
         <PackageId>AvaloniaExtras</PackageId>
         <Title>AvaloniaExtras</Title>
         <IsAotCompatible>true</IsAotCompatible>
+        <NoWarn>$(NoWarn);CA1711</NoWarn>
     </PropertyGroup>
 
     <PropertyGroup Label="Analyzers">

@@ -66,7 +66,9 @@ public abstract class BaseLocalizer : ILocalizer
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
+#pragma warning disable CA1716
     public abstract string Get(string key);
+#pragma warning restore CA1716
 
     /// <summary>
     ///
