@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Localization.Abstractions;
 
+// https://github.com/tifish/Jeek.Avalonia.Localization
 /// <summary>
 ///
 /// </summary>

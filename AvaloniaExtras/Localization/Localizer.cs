@@ -6,6 +6,7 @@ using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Localization;
 
+// https://github.com/tifish/Jeek.Avalonia.Localization
 /// <summary>
 ///
 /// </summary>
@@ -14,12 +15,8 @@ public static class Localizer
 {
     private static ILocalizer? _localizer;
 
-    /// <summary>
-    ///
-    /// </summary>
-    /// <exception cref="InvalidOperationException"></exception>
-    public static ILocalizer CurrentLocalizer =>
-        _localizer ?? throw new InvalidOperationException("Localizer was is set");
+    private static ILocalizer Current =>
+        _localizer ?? throw new InvalidOperationException("Localizer was is not set");
 
     /// <summary>
     ///
@@ -31,7 +28,7 @@ public static class Localizer
     ///
     /// </summary>
 #pragma warning disable CA1002
-    public static List<CultureInfo> Languages => CurrentLocalizer.Languages;
+    public static List<CultureInfo> Languages => Current.Languages;
 #pragma warning restore CA1002
 
     /// <summary>
@@ -39,8 +36,8 @@ public static class Localizer
     /// </summary>
     public static CultureInfo Language
     {
-        get => CurrentLocalizer.Language;
-        set => CurrentLocalizer.Language = value;
+        get => Current.Language;
+        set => Current.Language = value;
     }
 
     /// <summary>
@@ -48,14 +45,14 @@ public static class Localizer
     /// </summary>
     /// <param name="key"></param>
     /// <returns></returns>
-    public static string Get(string key) => CurrentLocalizer.Get(key);
+    public static string Get(string key) => Current.Get(key);
 
     /// <summary>
     ///
     /// </summary>
     public static event EventHandler? LanguageChanged
     {
-        add => CurrentLocalizer.LanguageChanged += value;
-        remove => CurrentLocalizer.LanguageChanged -= value;
+        add => Current.LanguageChanged += value;
+        remove => Current.LanguageChanged -= value;
     }
 }
