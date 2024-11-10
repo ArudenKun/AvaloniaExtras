@@ -3,8 +3,16 @@ using Avalonia.Interactivity;
 
 namespace AvaloniaExtras.Hosting;
 
+/// <summary>
+///
+/// </summary>
 public static class AcitvatableActivator
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="activatable"></param>
+    /// <param name="control"></param>
     public static void Bind(this IActivatable? activatable, Control? control)
     {
         ArgumentNullException.ThrowIfNull(activatable);

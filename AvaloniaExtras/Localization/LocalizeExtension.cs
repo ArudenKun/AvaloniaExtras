@@ -1,5 +1,4 @@
-﻿using System;
-using Avalonia;
+﻿using Avalonia;
 using Avalonia.Markup.Xaml;
 using JetBrains.Annotations;
 

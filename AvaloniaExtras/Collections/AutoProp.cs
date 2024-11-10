@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using JetBrains.Annotations;
-
-namespace AvaloniaExtras.Collections;
+﻿namespace AvaloniaExtras.Collections;
 
 /// <summary>
 /// Represents a readonly value that can be observed for changes.

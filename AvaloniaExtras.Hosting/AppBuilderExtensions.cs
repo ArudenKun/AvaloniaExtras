@@ -4,8 +4,19 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace AvaloniaExtras.Hosting;
 
+/// <summary>
+///
+/// </summary>
 public static class AppBuilderExtensions
 {
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="appBuilder"></param>
+    /// <param name="configureServices"></param>
+    /// <param name="afterStart"></param>
+    /// <returns></returns>
+    /// <exception cref="NotSupportedException"></exception>
     public static AppBuilder UseHosting(
         this AppBuilder appBuilder,
         Action<IServiceCollection>? configureServices = null,

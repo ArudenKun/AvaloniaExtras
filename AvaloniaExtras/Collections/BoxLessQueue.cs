@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AutoInterfaceAttributes;
+﻿using AutoInterfaceAttributes;
 
 namespace AvaloniaExtras.Collections;
 

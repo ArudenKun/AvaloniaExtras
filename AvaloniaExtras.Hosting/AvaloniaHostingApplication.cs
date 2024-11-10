@@ -11,6 +11,10 @@ using IApplicationLifetime = Avalonia.Controls.ApplicationLifetimes.IApplication
 
 namespace AvaloniaExtras.Hosting;
 
+/// <summary>
+///
+/// </summary>
+/// <typeparam name="TMainWindow"></typeparam>
 public abstract class AvaloniaHostingApplication<
     [DynamicallyAccessedMembers(DynamicallyAccessedMemberTypes.PublicConstructors)] TMainWindow
 > : Application, IAvaloniaHostingApplicationInitializer
@@ -23,9 +27,16 @@ public abstract class AvaloniaHostingApplication<
 
     private readonly string _mainWindowKey;
 
+    /// <summary>
+    ///
+    /// </summary>
     protected AvaloniaHostingApplication() =>
         _mainWindowKey = $"{GetHashCode()}-{typeof(TMainWindow).FullName}";
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <exception cref="InvalidOperationException"></exception>
     public new IClassicDesktopStyleApplicationLifetime ApplicationLifetime =>
         base.ApplicationLifetime as IClassicDesktopStyleApplicationLifetime
         ?? throw new InvalidOperationException(
@@ -63,19 +74,46 @@ public abstract class AvaloniaHostingApplication<
         services.AddSingleton(sp => sp.GetRequiredService<TopLevel>().Clipboard!);
     }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="environment"></param>
     protected virtual void ConfigureEnvironment(IHostEnvironment environment) { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="services"></param>
     protected virtual void ConfigureServices(IServiceCollection services) { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="builder"></param>
     protected virtual void ConfigureLogging(ILoggingBuilder builder) { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="services"></param>
     protected virtual void OnStartup(IServiceProvider services) { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="services"></param>
     protected virtual void OnExit(IServiceProvider services) { }
 
+    /// <summary>
+    ///
+    /// </summary>
+    /// <param name="mainWindow"></param>
+    /// <param name="services"></param>
+    /// <returns></returns>
     protected virtual Task ConfigureMainWindow(TMainWindow mainWindow, IServiceProvider services) =>
         Task.CompletedTask;
 
+    /// <inheritdoc />
     public sealed override async void OnFrameworkInitializationCompleted()
     {
         if (_host is null)
@@ -102,5 +140,6 @@ public abstract class AvaloniaHostingApplication<
         await _host.StartAsync();
     }
 
+    /// <inheritdoc />
     public sealed override void RegisterServices() => base.RegisterServices();
 }
