@@ -4,7 +4,6 @@ using AvaloniaExtras.SourceGenerators.Abstractions;
 using AvaloniaExtras.SourceGenerators.Extensions;
 using CodeGenHelpers;
 using H;
-using H.Generators.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -12,8 +11,7 @@ using Microsoft.CodeAnalysis.Diagnostics;
 namespace AvaloniaExtras.SourceGenerators.Generators.Localization.ResX;
 
 [Generator]
-public sealed class ResXLocalizerGenerator
-    : SourceGeneratorForTypeWithAttribute<ResXLocalizerAttribute>
+public sealed class Generator : SourceGeneratorForTypeWithAttribute<ResXLocalizerAttribute>
 {
     protected override string Id => "RXLG";
 

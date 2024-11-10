@@ -2,7 +2,22 @@
 using System.Collections.Generic;
 using AutoInterfaceAttributes;
 
-namespace AvaloniaExtras.Collections.Queue;
+namespace AvaloniaExtras.Collections;
+
+/// <summary>
+/// Interface for handling values stored in a <see cref="IBoxLessQueue"/>.
+/// </summary>
+public interface IBoxLessValueHandler
+{
+    /// <summary>
+    /// Callback invoked when a value is dequeued from a
+    /// <see cref="BoxLessQueue"/>.
+    /// </summary>
+    /// <param name="value">Value that was dequeued.</param>
+    /// <typeparam name="TValue">Type of the value.</typeparam>
+    void HandleValue<TValue>(in TValue value)
+        where TValue : struct;
+}
 
 /// <summary>
 /// <para>
@@ -56,6 +71,7 @@ public class BoxLessQueue(IBoxLessValueHandler handler) : IBoxLessQueue
     /// reducing heap allocations.
     /// </summary>
     public IBoxLessValueHandler Handler { get; } = handler;
+
     private readonly Queue<Type> _queueSelectorQueue = new();
     private readonly Dictionary<Type, TypedValueQueue> _queues = [];
 
@@ -97,6 +113,7 @@ public class BoxLessQueue(IBoxLessValueHandler handler) : IBoxLessQueue
         {
             return;
         }
+
         var type = _queueSelectorQueue.Dequeue();
         _queues[type].HandleValue(Handler);
     }

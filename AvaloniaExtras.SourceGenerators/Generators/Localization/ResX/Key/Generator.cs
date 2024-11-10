@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using AvaloniaExtras.Attributes;
 using AvaloniaExtras.SourceGenerators.Abstractions;
 using CodeGenHelpers;
@@ -6,22 +7,21 @@ using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace AvaloniaExtras.SourceGenerators.Generators.Localization.ResX;
+namespace AvaloniaExtras.SourceGenerators.Generators.Localization.ResX.Key;
 
 [Generator]
-public sealed class ResXLocalizerKeysGenerator
-    : SourceGeneratorForTypeWithAttribute<ResXLocalizerAttribute>
+public sealed class Generator : SourceGeneratorForTypeWithAttribute<ResXLocalizerAttribute>
 {
     protected override string Id => "RXLKG";
 
     private static readonly string[] Exceptions =
-    {
+    [
         "resourceMan",
         "resourceCulture",
         ".ctor",
         "ResourceManager",
         "Culture",
-    };
+    ];
 
     protected override string GenerateCode(
         Compilation compilation,
@@ -36,7 +36,7 @@ public sealed class ResXLocalizerKeysGenerator
 
         if (resourceSymbol is null || names is null)
         {
-            return "// Resource not found";
+            throw new Exception("Resource not found");
         }
 
         var builder = CodeBuilder
