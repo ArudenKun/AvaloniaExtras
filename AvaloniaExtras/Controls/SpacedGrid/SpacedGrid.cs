@@ -1,6 +1,5 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Diagnostics.Contracts;
 using System.Linq;
 using Avalonia;
 using Avalonia.Controls;
@@ -98,7 +97,9 @@ public class SpacedGrid : Grid
     {
         base.OnPropertyChanged(change);
 
+#pragma warning disable CA1062
         switch (change.Property.Name)
+#pragma warning restore CA1062
         {
             case nameof(RowSpacing):
                 RecalculateRowSpacing();

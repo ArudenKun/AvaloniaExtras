@@ -1,5 +1,8 @@
-<ResourceDictionary xmlns="https://github.com/avaloniaui" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <ControlTheme x:Key="{x:Type Acrylic}" TargetType="Acrylic">
+<ResourceDictionary
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:extras="https://github.com/ArudenKun/AvaloniaExtras">
+    <ControlTheme x:Key="{x:Type extras:Acrylic}" TargetType="extras:Acrylic">
         <Setter Property="Template">
             <ControlTemplate>
                 <ContentPresenter

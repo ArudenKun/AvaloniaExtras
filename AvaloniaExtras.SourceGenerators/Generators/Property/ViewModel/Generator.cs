@@ -2,7 +2,6 @@
 using System.Threading;
 using AvaloniaExtras.SourceGenerators.Extensions;
 using CodeGenHelpers;
-using H.Generators.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;

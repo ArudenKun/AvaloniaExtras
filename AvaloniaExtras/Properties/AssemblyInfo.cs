@@ -1,5 +1,7 @@
 ﻿using Avalonia.Metadata;
 
+[assembly: XmlnsDefinition("https://github.com/ArudenKun/AvaloniaExtras", "AvaloniaExtras")]
+
 #region Controls
 
 [assembly: XmlnsDefinition(

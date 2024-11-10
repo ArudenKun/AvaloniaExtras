@@ -38,7 +38,7 @@ public sealed class Generator : SourceGeneratorForTypeWithAttribute<ResXLocalize
 
         var builder = CodeBuilder.Create(symbol);
 
-        builder.SetBaseClass("TwitchDownloader.Translations.Abstractions.BaseLocalizer");
+        builder.SetBaseClass("AvaloniaExtras.Localization.Abstractions.BaseLocalizer");
 
         builder
             .AddMethod("Reload")
