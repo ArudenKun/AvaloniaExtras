@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Globalization;
 using AvaloniaExtras.Localization.Abstractions;
 using AvaloniaExtras.Localization.Localizers;
+using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Localization;
 
 /// <summary>
 ///
 /// </summary>
+[PublicAPI]
 public static class Localizer
 {
     private static ILocalizer _localizer = new JsonLocalizer();
@@ -22,7 +24,9 @@ public static class Localizer
     /// <summary>
     ///
     /// </summary>
+#pragma warning disable CA1002
     public static List<CultureInfo> Languages => _localizer.Languages;
+#pragma warning restore CA1002
 
     /// <summary>
     ///

@@ -12,6 +12,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras.SourceGenera
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AvaloniaExtras.Attributes", "AvaloniaExtras.Attributes\AvaloniaExtras.Attributes.csproj", "{46FEFE59-084E-4A40-BB94-F6C38BB87749}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{99E3F8B2-B586-4D02-A2B2-2A29F55B5274}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\dev.ps1 = scripts\dev.ps1
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,5 +35,8 @@ Global
 		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{46FEFE59-084E-4A40-BB94-F6C38BB87749}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99E3F8B2-B586-4D02-A2B2-2A29F55B5274} = {1EFB5F09-58EB-49EE-93E5-7EBDDC306019}
 	EndGlobalSection
 EndGlobal

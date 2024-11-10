@@ -12,13 +12,6 @@
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
-    
-    <ItemGroup>
-        <PackageReference Include="DotNet.ReproducibleBuilds" Version="1.2.25">
-            <PrivateAssets>all</PrivateAssets>
-            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-        </PackageReference>
-    </ItemGroup>
 
     <Sdk Name="ViHo.PackAsAnalyzer" Version="1.0.1"/>
 </Project>

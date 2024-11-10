@@ -5,11 +5,12 @@
         <ImplicitUsings>false</ImplicitUsings>
         <LangVersion>12</LangVersion>
         <Nullable>enable</Nullable>
-        <GenerateDocumentationFile>false</GenerateDocumentationFile>
         <EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
         <EnforceExtendedAnalyzerRules>true</EnforceExtendedAnalyzerRules>
         <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
-        <NoWarn>$(NoWarn);CA1014;CA1031;CA1062</NoWarn>
+        <IsPackable>false</IsPackable>
+        <IsRoslynComponent>true</IsRoslynComponent>
+        <NoWarn>$(NoWarn);CA1014;CA1308;CA1031</NoWarn>
     </PropertyGroup>
 
     <ItemGroup Label="Attributes">
