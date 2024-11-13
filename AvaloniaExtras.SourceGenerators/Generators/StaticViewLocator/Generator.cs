@@ -5,7 +5,6 @@ using AvaloniaExtras.Attributes;
 using AvaloniaExtras.SourceGenerators.Abstractions;
 using AvaloniaExtras.SourceGenerators.Extensions;
 using H;
-using H.Generators.Extensions;
 using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
@@ -21,7 +20,7 @@ public sealed class Generator : SourceGeneratorForTypeWithAttribute<StaticViewLo
         [
             new(
                 $"{typeof(StaticViewLocatorAttribute).FullName}",
-                Resources.StaticViewLocatorAttribute_cs.AsString()
+                Resources.StaticViewLocatorAttribute_cs.AsGeneratedString()
             ),
         ];
 

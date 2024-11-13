@@ -19,7 +19,7 @@ public sealed class Generator : SourceGeneratorForTypeWithAttribute<ResXLocalize
         [
             new(
                 $"{typeof(ResXLocalizerAttribute).FullName}",
-                Resources.ResXLocalizerAttribute_cs.AsString()
+                Resources.ResXLocalizerAttribute_cs.AsGeneratedString()
             ),
         ];
 
