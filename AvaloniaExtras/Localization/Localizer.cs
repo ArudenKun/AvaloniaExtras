@@ -1,5 +1,4 @@
 ﻿using System.Globalization;
-using AvaloniaExtras.Localization.Abstractions;
 using JetBrains.Annotations;
 
 namespace AvaloniaExtras.Localization;
